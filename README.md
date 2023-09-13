@@ -23,6 +23,7 @@ irm get.scoop.sh | iex
 Final mente en la misma ventana ejecutar:
 
 ```sh
+scoop install main/python
 scoop install main/sqlite
 scoop install main/git
 
@@ -34,3 +35,15 @@ cd ModuloSQLvsNoSQL
 
 
 ```
+
+![Instalar Python y SQLite](Imgs/InstalarPythonSQLite.png)
+
+
+### Linux
+
+#### Debian y derivados
+
+```sh
+sudo apt -y install sqlite python3 python3-dev python3-venv git gitk
+```
+
