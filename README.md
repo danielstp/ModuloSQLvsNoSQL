@@ -24,3 +24,7 @@ Curso de SQL y NoSQL
 - [Glosario de términos en SQL](Docs/GlosarioSQL.md)
 
 - [Glosario de términos en NoSQL](Docs/GlosarioNoSQL.md)
+
+# Retos
+
+[Reto 0](Docs/Reto0.md)
