@@ -15,3 +15,5 @@ en SQLite ejecutar:
 .read DatosSQLite/sqlite-sakila-schema.sql
 .read DatosSQLite/sqlite-sakila-insert-data.sql
 ```
+
+![Modelo de Datos](../Imgs/Modelos-sakila.svg)

@@ -19,6 +19,10 @@ Curso de SQL y NoSQL
 
 [Cargar datos Iniciales en SQLite](Docs/CargarDatosInicialesEnSQLite.md)
 
+# Prueba en Django
+
+[Prueba de los datos en Django](Docs/PruebaDjango.md)
+
 # Sentencia Join en SQL
 
 ![Sentencia Join en SQL](Imgs/Joins_del_SQL.svg)
