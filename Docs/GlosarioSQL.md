@@ -45,3 +45,15 @@ Aquí hay un glosario de términos comunes utilizados en SQL:
 - Rollback: restaura la base de datos a su estado anterior antes de una transacción.
 
 - Cursor: área de trabajo temporal creada por un sistema de base de datos para ejecutar declaraciones SQL.
+
+- Diccionario de Datos: repositorio de metadatos, según IBM Dictionary of Computing, es un repositorio centralizado de información sobre datos tales como significado, relación con otros datos, origen, uso y formato.
+
+- Diagrama de Entidad Relación: Representación visual del modelo de datos, la cual facilita la representación de entidades de una base de datos.
+
+- Modelo Conceptual: Descripción de alto nivel de la estructura de la base de datos, independiente del
+SGBD que se vaya a utilizar.
+
+- Modelo Lógico: Descripción de alto nivel de la estructura de la base de datos, considerando del
+SGBD que se vaya a utilizar.
+
+- Modelo Físico: Descripción a bajo nivel de la estructura de la base de datos.

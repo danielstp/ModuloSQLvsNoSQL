@@ -19,6 +19,11 @@ Curso de SQL y NoSQL
 
 [Cargar datos Iniciales en SQLite](Docs/CargarDatosInicialesEnSQLite.md)
 
+# Sentencia Join en SQL
+
+![Sentencia Join en SQL](Imgs/Joins_del_SQL.svg)
+[Sentencia Join en SQL](https://es.wikipedia.org/wiki/Sentencia_JOIN_en_SQL)
+
 # Glosario
 
 - [Glosario de términos en SQL](Docs/GlosarioSQL.md)
@@ -27,4 +32,4 @@ Curso de SQL y NoSQL
 
 # Retos
 
-[Reto 0](Docs/Reto0.md)
+0. [Reto 0](Docs/Reto0.md)
