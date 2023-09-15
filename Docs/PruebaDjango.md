@@ -20,6 +20,16 @@ python manage.py migrate
 ![](../Imgs/DjangoMigrate.png)
 
 ```
+sqlite3 db.sqlite3
+
+.read ../DatosSQLite/sqlite-sakila-insert-data.sql
+
+.q
+
+```
+![](../Imgs/CargarDatosEnSQLite.png)
+```
+
 python manage.py createsuperuser --username ${NombreDeUsuario} --email ${correo@gmail.com}
 
 python manage.py runserver
@@ -42,11 +52,22 @@ cd ejemploSimple
 
 ./manage.py migrate
 
+sqlite3 db.sqlite3
+
+.read ../DatosSQLite/sqlite-sakila-insert-data.sql
+
+.q
+
+```
+![](../Imgs/PasosEnLinux.png)
+
+![](../Imgs/FinalizarCargaDeDatosEnLinux.png)
+```
 ./manage.py createsuperuser --username ${NombreDeUsuario} --email ${correo@gmail.com}
 
 ./manage.py runserver
 ```
-
+![](../Imgs/EjecutarDjangoEnLinux.png)
 
 ## En un navegador
 
