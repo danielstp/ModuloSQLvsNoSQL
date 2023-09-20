@@ -29,7 +29,7 @@ En Español
 
 - [Aplicación BI en el fútbol](https://data.world/camilb12/aplicacin-bi-en-el-ftbol/workspace/intro)
 - [Nombres de pila españoles](https://data.world/rigonz/spanish-given-names-nombres-de-pila-espaoles)
-
+- [sql tutorial a guide to learning SQL & data.world](https://data.world/classrooms/guide-to-data-analysis-with-sql-and-datadotworld/workspace/file?filename=01_select_data.md)
 ## Instalar SQLite
 
 ### Windows
