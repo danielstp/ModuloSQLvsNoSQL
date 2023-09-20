@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Actor(models.Model):
-    actor_id = models.AutoField(primary_key=True)
+    actor_id = models.AutoField(primary_key=True,db_index=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     last_update = models.DateField(auto_now=True)
@@ -15,7 +15,7 @@ class Actor(models.Model):
 
 
 class Address(models.Model):
-    address_id = models.AutoField(primary_key=True)
+    address_id = models.AutoField(primary_key=True,db_index=True)
     address = models.CharField(max_length=50)
     address2 = models.CharField(blank=True, null=True,max_length=50)
     district = models.CharField(max_length=20)
@@ -32,7 +32,7 @@ class Address(models.Model):
 
 
 class Category(models.Model):
-    category_id = models.AutoField(primary_key=True)
+    category_id = models.AutoField(primary_key=True,db_index=True)
     name = models.CharField(max_length=25)
     last_update = models.DateField(auto_now=True)
     
@@ -44,7 +44,7 @@ class Category(models.Model):
 
 
 class City(models.Model):
-    city_id = models.AutoField(primary_key=True)
+    city_id = models.AutoField(primary_key=True,db_index=True)
     city = models.CharField(max_length=50)
     country = models.ForeignKey('Country', on_delete=models.RESTRICT)
     last_update = models.DateField(auto_now=True)
@@ -57,7 +57,7 @@ class City(models.Model):
 
 
 class Country(models.Model):
-    country_id = models.AutoField(primary_key=True)
+    country_id = models.AutoField(primary_key=True,db_index=True)
     country = models.CharField(max_length=50)
     last_update = models.DateField(auto_now=True, blank=True, null=True)  # This field type is a guess.
 
@@ -69,7 +69,7 @@ class Country(models.Model):
 
 
 class Customer(models.Model):
-    customer_id = models.AutoField(primary_key=True)
+    customer_id = models.AutoField(primary_key=True,db_index=True)
     store = models.ForeignKey('Store', on_delete=models.RESTRICT)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
@@ -88,7 +88,7 @@ class Customer(models.Model):
 
 
 class Film(models.Model):
-    film_id = models.AutoField(primary_key=True)
+    film_id = models.AutoField(primary_key=True,db_index=True)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)  # This field type is a guess.
     release_year = models.CharField(blank=True, null=True,max_length=4)
@@ -134,7 +134,7 @@ class FilmCategory(models.Model):
 
 
 class FilmText(models.Model):
-    film_id = models.AutoField(primary_key=True)
+    film_id = models.AutoField(primary_key=True,db_index=True)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)  # This field type is a guess.
     
@@ -146,7 +146,7 @@ class FilmText(models.Model):
 
 
 class Inventory(models.Model):
-    inventory_id = models.AutoField(primary_key=True)
+    inventory_id = models.AutoField(primary_key=True,db_index=True)
     film = models.ForeignKey(Film, on_delete=models.RESTRICT)
     store = models.ForeignKey('Store', on_delete=models.RESTRICT)
     last_update = models.DateField(auto_now=True)
@@ -159,7 +159,7 @@ class Inventory(models.Model):
 
 
 class Language(models.Model):
-    language_id = models.AutoField(primary_key=True)
+    language_id = models.AutoField(primary_key=True,db_index=True)
     name = models.CharField(max_length=20)
     last_update = models.DateField(auto_now=True)
     
@@ -171,7 +171,7 @@ class Language(models.Model):
 
 
 class Payment(models.Model):
-    payment_id = models.AutoField(primary_key=True)
+    payment_id = models.AutoField(primary_key=True,db_index=True)
     customer = models.ForeignKey(Customer, on_delete=models.RESTRICT)
     staff = models.ForeignKey('Staff', on_delete=models.RESTRICT)
     rental = models.ForeignKey('Rental', on_delete=models.RESTRICT, blank=True, null=True)
@@ -187,7 +187,7 @@ class Payment(models.Model):
 
 
 class Rental(models.Model):
-    rental_id = models.AutoField(primary_key=True)
+    rental_id = models.AutoField(primary_key=True,db_index=True)
     rental_date = models.DateField()  # This field type is a guess.
     inventory = models.ForeignKey(Inventory, on_delete=models.RESTRICT)
     customer = models.ForeignKey(Customer, on_delete=models.RESTRICT)
@@ -204,7 +204,7 @@ class Rental(models.Model):
 
 
 class Staff(models.Model):
-    staff_id = models.AutoField(primary_key=True)
+    staff_id = models.AutoField(primary_key=True,db_index=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     address = models.ForeignKey(Address, on_delete=models.RESTRICT)
@@ -224,7 +224,7 @@ class Staff(models.Model):
 
 
 class Store(models.Model):
-    store_id = models.AutoField(primary_key=True)
+    store_id = models.AutoField(primary_key=True,db_index=True)
     manager_staff = models.ForeignKey(Staff, on_delete=models.RESTRICT,related_name='manager_staff_1')
     address = models.ForeignKey(Address, on_delete=models.RESTRICT)
     last_update = models.DateField(auto_now=True)
