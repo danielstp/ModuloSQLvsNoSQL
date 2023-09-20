@@ -6,14 +6,13 @@ from .models import Actor, Address, Category, City, Country, Customer, Film, Fil
 
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
-    list_display = ('actor_id', 'first_name', 'last_name', 'last_update')
+    list_display = ('first_name', 'last_name', 'last_update')
     list_filter = ('last_update',)
 
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
     list_display = (
-        'address_id',
         'address',
         'address2',
         'district',
@@ -27,27 +26,26 @@ class AddressAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('category_id', 'name', 'last_update')
+    list_display = ('name', 'last_update')
     list_filter = ('last_update',)
     search_fields = ('name',)
 
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ('city_id', 'city', 'country', 'last_update')
+    list_display = ('city', 'country', 'last_update')
     list_filter = ('country', 'last_update')
 
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ('country_id', 'country', 'last_update')
+    list_display = ('country', 'last_update')
     list_filter = ('last_update',)
 
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
     list_display = (
-        'customer_id',
         'store',
         'first_name',
         'last_name',
@@ -63,7 +61,6 @@ class CustomerAdmin(admin.ModelAdmin):
 @admin.register(Film)
 class FilmAdmin(admin.ModelAdmin):
     list_display = (
-        'film_id',
         'title',
         'description',
         'release_year',
@@ -94,18 +91,18 @@ class FilmCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(FilmText)
 class FilmTextAdmin(admin.ModelAdmin):
-    list_display = ('film_id', 'title', 'description')
+    list_display = ('title', 'description')
 
 
 @admin.register(Inventory)
 class InventoryAdmin(admin.ModelAdmin):
-    list_display = ('inventory_id', 'film', 'store', 'last_update')
+    list_display = ('film', 'store', 'last_update')
     list_filter = ('film', 'store', 'last_update')
 
 
 @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):
-    list_display = ('language_id', 'name', 'last_update')
+    list_display = ('name', 'last_update')
     list_filter = ('last_update',)
     search_fields = ('name',)
 
@@ -113,7 +110,6 @@ class LanguageAdmin(admin.ModelAdmin):
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
     list_display = (
-        'payment_id',
         'customer',
         'staff',
         'rental',
@@ -124,7 +120,7 @@ class PaymentAdmin(admin.ModelAdmin):
     list_filter = (
         'customer',
         'staff',
-        'rental',
+#        'rental',
         'payment_date',
         'last_update',
     )
@@ -133,7 +129,6 @@ class PaymentAdmin(admin.ModelAdmin):
 @admin.register(Rental)
 class RentalAdmin(admin.ModelAdmin):
     list_display = (
-        'rental_id',
         'rental_date',
         'inventory',
         'customer',
@@ -154,7 +149,6 @@ class RentalAdmin(admin.ModelAdmin):
 @admin.register(Staff)
 class StaffAdmin(admin.ModelAdmin):
     list_display = (
-        'staff_id',
         'first_name',
         'last_name',
         'address',
@@ -171,5 +165,5 @@ class StaffAdmin(admin.ModelAdmin):
 
 @admin.register(Store)
 class StoreAdmin(admin.ModelAdmin):
-    list_display = ('store_id', 'manager_staff', 'address', 'last_update')
+    list_display = ('manager_staff', 'address', 'last_update')
     list_filter = ('manager_staff', 'address', 'last_update')
