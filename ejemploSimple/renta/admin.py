@@ -120,6 +120,7 @@ class PaymentAdmin(admin.ModelAdmin):
     list_filter = (
         'customer',
         'staff',
+        'amount',
 #        'rental',
         'payment_date',
         'last_update',

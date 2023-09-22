@@ -7,7 +7,7 @@ cd ModuloSQLvsNoSQL
 python -m venv venv
 .\venv\Scripts\activate
 
-pip install django django_extensions
+pip install -r requirements.txt
 ```
 ![](../Imgs/PipInstallDjango+extensions.png)
 
