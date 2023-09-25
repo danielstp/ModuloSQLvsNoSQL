@@ -67,3 +67,4 @@ En Español
 
 0. [Reto 0](Docs/Reto0.md)
 1. [Reto 1](Docs/Reto1.md)
+2. [Reto 2](Docs/Reto2.rst)
