@@ -7,6 +7,8 @@ Bases de datos NoSQL
 todo científico de datos necesita saber
 =======================================
 
+:Traducción de: `nosql-databases-what-every-data-scientist-needs-to-know <https://www.datacamp.com/blog/nosql-databases-what-every-data-scientist-needs-to-know>`_
+
 Descubra para qué se utilizan las bases de datos NoSQL, por qué las utilizan los científicos de datos y una lista de las mejores bases de datos NoSQL disponibles.
 
 Exploramos una descripción general completa de los entresijos de las bases de datos NoSQL para científicos de datos.
