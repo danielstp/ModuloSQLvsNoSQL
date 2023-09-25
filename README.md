@@ -22,6 +22,8 @@ En Español
 - [Extension para VisualStudio Code](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
 
 ## NoSQL
+- [NoSQL](Docs/NoSQL.rst)
+    - [NoSQL PDF](Docs/NoSQL.pdf)
 - [Modelos de datos NoSQL](https://eaminds.com/2018/08/03/modelando-nosql-data-bases/)
 - [Modelado de datos NoSQL](https://aitor-medrano.github.io/iabd2223/sa/03modelado.html)
 
