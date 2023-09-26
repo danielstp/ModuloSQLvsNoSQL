@@ -1,0 +1,18 @@
+digraph D {
+    layout=circo
+    node [shape=record fontname="Anaktoria"];
+
+    NoSQL [shape=cylinder    label="Base de Datos \n NoSQL"];
+    Escalabilidad [label="{Alta Escalabilidad|Las bases de datos NoSQL\npueden manejar incrementos en la\ndemanda, añadiendo servidores}"];
+    Disponibilidad [label="{Alta Disponibilidad|Pueden ejecutarse sin\ninterrupciones de servicio}"];
+    BigData [label="{Manejo Eficiende de\ngrandes volumenes de\ndatos|Capacidad de almacenar\ngrandes cantidades de\ndatos sin estructura,\njusto para BigData}"];
+    ToleranciaParticion [label="{Tolerancia a la Partición|Continuan operando a\npesar de desconexiones\nentre nodos}"];
+    DesarrolloRapido [label="{Desarrollo Rápido|Bien adaptados para\nentornos de desarrollo\nrápido}"];
+
+    NoSQL->Escalabilidad
+    NoSQL->Disponibilidad
+    NoSQL->BigData
+    NoSQL->ToleranciaParticion
+    NoSQL->DesarrolloRapido
+
+}
