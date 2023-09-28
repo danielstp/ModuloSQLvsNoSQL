@@ -57,6 +57,42 @@ Comprender la terminología Docker
                          v                          ↘ Imagen Docker
                   Contenedor Docker                         ↓
                                                      Contenedor Docker
+Instalar Docker en Windows
+--------------------------
+
+Descargar de `docker.com <https://docker.com>`_
+
+.. image:: ../Imgs/InstalarDockerEnWindows.png
+
+Permit
+Instalando...
+
+.. image:: ../Imgs/InstalandoDockerEnWindows.png
+
+Reiniciar
+
+.. image:: ../Imgs/ReinicarLuegoDeInstalarDocker.png
+
+.. image:: ../Imgs/TerminoInstalarDocker.png
+
+.. image:: ../Imgs/SuscripDocker.png
+
+.. image:: ../Imgs/IniciandoDocker.png
+
+en caso de error es necesario instalar `Subsistema de Linux para Windows WSL
+<https://es.wikipedia.org/wiki/Subsistema_de_Windows_para_Linux>`_
+
+.. image:: ../Imgs/ErrorWSL.png
+
+.. code::
+
+ wsl --install
+ wsl --update
+
+.. image:: ../Imgs/ActualizarWSL.png
+.. image:: ../Imgs/ActualizarWSL1.png
+.. image:: ../Imgs/ActualizarWSL2.png
+.. image:: ../Imgs/InstalandoDebianEnWindows.png
 
 Dockerfile
 ----------
@@ -131,7 +167,7 @@ Integración de la aplicación Node.js + MongoDB con Docker
 
 Veamos cómo integrar una aplicación Node.js con contenedores Docker. Para este
 tutorial, he creado una aplicación de inicio de sesión de muestra utilizando
-MongoDB. Archivos fuente: `GitHub-Rammohan-bitzop/login-app <https://github.com/Rammohan-bitzop/login-app>`_
+MongoDB. Archivos fuente: `Simple Node.js / Express.js / MongoDB / Docker Proof-of-concept <https://github.com/jennaknudsen/simple-nodejs-mongodb-docker-app.git>`_
 
 Pasos involucrados:
 
@@ -151,17 +187,8 @@ Iniciar node
 
 .. code::
 
- git clone https://github.com/Rammohan-bitzop/login-app.git
- cd login-app
- nodemon app.js
-
-
-Iniciar MongoDB
-
-.. code::
-
- sudo mongod --config /etc/mongod.conf
-
+ git clone https://github.com/jennaknudsen/simple-nodejs-mongodb-docker-app.git
+ cd simple-nodejs-mongodb-docker-app
 
 Ahora dockericemos esta aplicación.
 
@@ -170,15 +197,20 @@ Paso 2
 
 Cree Dockerfile para cada servicio
 
-- Se puede crear un Dockerfile en el mismo directorio del proyecto o fuera del directorio del proyecto (se debe proporcionar la ruta a los archivos fuente).
+- Se puede crear un Dockerfile en el mismo directorio del proyecto o fuera del
+  directorio del proyecto (se debe proporcionar la ruta a los archivos fuente).
 - Crearé el archivo Docker en el directorio del proyecto.
-- Crear un Dockerfile es tan fácil como crear un archivo nuevo. Asigne a este archivo el nombre que desee, pero la práctica estándar es llamarlo Dockerfile. Con su editor de texto preferido, puede agregar algunas instrucciones en ese archivo.
+- Crear un Dockerfile es tan fácil como crear un archivo nuevo. Asigne a este
+  archivo el nombre que desee, pero la práctica estándar es llamarlo Dockerfile.
+- Con su editor de texto preferido, puede agregar algunas instrucciones en ese archivo.
 
 **Al ejecutar un archivo acoplable se crea una imagen. Una imagen se compone de varias capas y cada instrucción en un Dockerfile agrega una capa a la imagen.**
 
 - Las capas de una imagen constan de archivos de aplicación y sus dependencias.
 
-Necesitamos 2 servicios para que se ejecute nuestra aplicación, por lo que necesitamos 2 imágenes para nuestra aplicación, una para la aplicación de inicio de sesión y otra para MongoDB.
+Necesitamos 2 servicios para que se ejecute nuestra aplicación, por lo que
+necesitamos 2 imágenes para nuestra aplicación, una para la aplicación de inicio
+de sesión y otra para MongoDB.
 
 Imagen de la aplicación de inicio de sesión de Dockerfile:
 
@@ -199,7 +231,7 @@ Imagen de la aplicación de inicio de sesión de Dockerfile:
  # copiar el código fuente de la aplicación en el directorio contenedor
  COPY . /usr/src/app
  # contenedor expuesto número de puerto de red
- EXPOSE 7500
+ EXPOSE 3000
  #comando para ejecutar dentro del contenedor
  CMD ['node', 'app.js']
 
@@ -218,13 +250,13 @@ Construyendo y probando Dockerfile:
 Ejecute el comando anterior en el directorio del proyecto donde está almacenado
 el archivo Dockerfile.
 
-Para esta demostración, nombré mi imagen como Latest123/login-app. Asigne un
+Para esta demostración, nombré mi imagen como Latest123/simple-nodejs-mongodb-docker-app. Asigne un
 nombre a su imagen según sus requisitos, ya que se utiliza para realizar todas
 las operaciones.
 
 .. code::
 
- docker build -t latest123/login-app .
+ docker build -t latest123/simple-nodejs-mongodb-docker-app .
 
 - Para enumerar las imágenes creadas, use el comando:
 
@@ -260,56 +292,96 @@ Listar los contenedores en ejecución
 
 Ahora para monitorear los comandos de uso del contenedor:
 
-#Para enumerar los contenedores en ejecución 
-sudo docker ps#Para enumerar todos los contenedores disponibles 
-sudo docker ps -a#Para iniciar un contenedor detenido 
-sudo docker start <nombre_contenedor/ID>#Para detener un contenedor en ejecución 
+#Para enumerar los contenedores en ejecución
+sudo docker ps#Para enumerar todos los contenedores disponibles
+sudo docker ps -a#Para iniciar un contenedor detenido
+sudo docker start <nombre_contenedor/ID>#Para detener un contenedor en ejecución
 sudo docker stop <nombre_contenedor/ID>
 
-No creé una imagen de Mongo porque usaré la imagen oficial de Mongo de Docker Hub en el archivo de Docker Compose.
-Paso 3: Definir servicios usando el archivo Redactar
+No creé una imagen de Mongo porque usaré la imagen oficial de Mongo de Docker
+Hub en el archivo de Docker Compose.
 
-    Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker de múltiples contenedores. Con Compose, utiliza un archivo YAML para configurar los servicios de su aplicación. Luego, con un solo comando, creas e inicias todos los servicios/contenedores desde tu configuración.
+Paso 3
+-------
 
-Creando un docker-compose.yml
+Definir servicios usando el archivo docker-compose.yml
 
-Ahora creemos un archivo docker-compose.yml en el mismo directorio. Definiremos nuestros servicios/contenedores dentro de este archivo. Al crear un archivo Docker-Compose, la extensión .yml es imprescindible.
+Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker de
+múltiples contenedores. Con Compose, se utiliza un archivo YAML para configurar
+los servicios de su aplicación. Luego, con un solo comando, creas e inicias\
+todos los servicios/contenedores desde tu ambiente local.
+
+Creando docker-compose.yml
+
+Ahora creemos un archivo docker-compose.yml en el mismo directorio. Definiremos
+nuestros servicios/contenedores dentro de este archivo. Al crear un archivo
+Docker-Compose, la extensión .yml es imprescindible.
 
 docker-compose.yml
 
-versión: "3" 
-servicios: 
-       aplicación de inicio de sesión: 
-           nombre_contenedor: 
-           imagen de la aplicación de inicio de sesión: último123/ 
-           reinicio de la aplicación de inicio de sesión: siempre 
-           compilar: . 
-           puertos: 
-             -            enlaces "7500:7500" :              - mongo        mongo:              nombre_contenedor:              imagen de mongo:              volúmenes de mongo:                - ./data:/data/db              puertos:                - '27018:27017'
+.. code::
 
-
-
-
-
-
-
+ version: "3"
+ services:
+        mongo-container:
+              container_name: mongo-container
+              image: mongo:4.2
+              volumes:
+                - ./data:/data/db
+              ports:
+                - '27018:27017'
+        simple-nodejs-mongodb-docker-app:
+            container_name: simple-nodejs-mongodb-docker-app
+            image: latest123/simple-nodejs-mongodb-docker-app
+            restart: always
+            build: .
+            ports:
+              - "3000:3000"
+            links:
+              - mongo-container
 
 Desglosando el código anterior:
 
-    Este archivo de redacción define dos servicios: login-app y mongo
-    El valor del campo container_name se utiliza para nombrar el contenedor creado.
-    Para el servicio de aplicación de inicio de sesión , lo llamé aplicación de inicio de sesión. De esta manera, nombrar un contenedor correctamente hace que sea más fácil trabajar con él y puede evitar nombres de contenedor generados aleatoriamente (esto es simplemente una preferencia personal, el nombre del servicio y los contenedores no tienen que ser iguales).
-    El campo de compilación es donde especificamos la ruta al dockerfile para crear la imagen.
-    Estoy creando la imagen de la aplicación de inicio de sesión usando el Dockerfile en el directorio del proyecto y asignando el puerto del host/navegador al puerto del contenedor/servicio/aplicación.
-    Puede crear la imagen ejecutando el archivo acoplable y luego especificar el nombre de la imagen en el archivo acoplable o proporcionar directamente la ruta del archivo acoplable en redacción mediante el comando de compilación. Cuando especifica ambos, utiliza el comando de compilación.
-    Nuestro segundo servicio es MongoDB , pero esta vez en lugar de crear nuestra propia imagen de Mongo , simplemente extraemos la imagen de Mongo estándar del registro de Docker Hub. Como aprendimos anteriormente, si una imagen no está disponible localmente, el demonio acoplable intentará extraerla de Docker Hub.
-    Como la información en una Base de Datos no es volátil, necesitamos almacenamiento persistente. Entonces, montamos el directorio del host externo /data (aquí es donde agregué algunos datos iniciales a mi base de datos cuando ejecuté la aplicación localmente) en el directorio del contenedor /data/db .
-    Los contenedores no tienen estado, lo que significa que cuando un contenedor finaliza, todos sus datos desaparecen. Montar volúmenes nos brinda almacenamiento persistente, por lo que al iniciar reiniciamos un contenedor, Docker Compose usará este almacenamiento persistente donde se almacenan todos los datos de los contenedores anteriores y lo copiará en el nuevo contenedor, asegurándose de que no se pierda ningún dato.
-    Finalmente, usamos el comando links para vincular ambos servicios.
-    De esta manera, se puede acceder al servicio MongoDB desde el servicio de la aplicación de inicio de sesión .
+- Este archivo define dos servicios: **simple-nodejs-mongodb-docker-app** y **mongo-container**
+- El campo **container_name** se utiliza para nombrar el contenedor creado.
+- El campo **build** especifica la ruta al archivo dockerfile para crear la
+  imagen, en este caso llamé simple-nodejs-mongodb-docker-app. De esta manera,
+  nombrar un contenedor correctamente hace que sea más fácil trabajar con él y
+  puede evitar nombres de contenedor generados aleatoriamente (esto es
+  simplemente una preferencia personal, el nombre del servicio y los
+  contenedores no tienen que ser iguales).
+- El campo de compilación es donde especificamos la ruta al dockerfile para
+  crear la imagen.
+- Estoy creando la imagen de la aplicación de inicio de sesión usando el
+  Dockerfile en el directorio del proyecto y asignando el puerto del
+  host/navegador al puerto del contenedor/servicio/aplicación.
+- Puede crear la imagen ejecutando `docker build` y luego especificar el nombre
+  de la imagen en dockerfile o proporcionar directamente la ruta del dockerfile
+  en redacción mediante el comando de compilación. Cuando especifica ambos,
+  utiliza el comando de compilación.
+- Nuestro segundo servicio es MongoDB , pero esta vez en lugar de crear nuestra
+  propia imagen de Mongo , simplemente extraemos la imagen de Mongo estándar del
+  registro de Docker Hub. Como aprendimos anteriormente, si una imagen no está
+  disponible localmente, el demonio docker intentará extraerla de Docker Hub.
+- Como la información en una Base de Datos no es volátil, necesitamos almacenamiento persistente. Entonces, montamos el directorio del host externo /data (aquí es donde agregué algunos datos iniciales a mi base de datos cuando ejecuté la aplicación localmente) en el directorio del contenedor /data/db .
+- Los contenedores no tienen estado, lo que significa que cuando un contenedor finaliza, todos sus datos desaparecen. Montar volúmenes nos brinda almacenamiento persistente, por lo que al iniciar reiniciamos un contenedor, Docker Compose usará este almacenamiento persistente donde se almacenan todos los datos de los contenedores anteriores y lo copiará en el nuevo contenedor, asegurándose de que no se pierda ningún dato.
+- Finalmente, usamos el comando links para vincular ambos servicios.
 
-Ejecutaremos este archivo docker-compose.yml usando el comando docker-compose up , que activará dos contenedores con nuestros servicios ejecutándose dentro de ellos y expondrá los servicios en números de puerto determinados.
-Paso 4: ejecute docker-compose para crear la aplicación
+De esta manera, se puede acceder al servicio MongoDB desde el servicio de la aplicación de inicio de sesión .
+
+Ejecutaremos este archivo docker-compose.yml usando el comando
+
+.. code::
+
+ docker-compose up
+
+que activará dos contenedores con nuestros servicios ejecutándose dentro de
+ellos y expondrá los servicios en números de puerto determinados.
+
+Paso 4
+------
+
+Ejecute docker-compose para crear la aplicación
 
     Desde el directorio del proyecto, inicie su aplicación ejecutando
 
@@ -317,7 +389,7 @@ Docker-componer
 
 Entonces deberías ver este resultado confirmando que tus servicios han sido creados:
 
-Nuestra aplicación debería estar ejecutándose en http://localhost:7500/
+Nuestra aplicación debería estar ejecutándose en http://localhost:3000/
 
     En esta etapa, cambie a otra ventana de terminal, use este comando para enumerar todas las imágenes locales
 
@@ -337,10 +409,8 @@ Se verá así cuando usemos Ctrl+c.
 
     Si desea volver a ejecutar la aplicación, ejecute el comando
 
-docker-componer.
+.. code::
 
-Gracias por la lectura. En mi próximo artículo analizaré cómo sincronizar las actualizaciones de código en una aplicación dockerizada que se ejecuta en varios servidores.
+ docker-compose up
 
-Espero que este artículo haya sido útil.
 
-    Esta historia es escrita por Rammohan Guduru. Ram es un ingeniero de DevOps especializado en soluciones basadas en Docker.
