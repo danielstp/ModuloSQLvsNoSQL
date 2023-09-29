@@ -64,7 +64,10 @@ Descargar de `docker.com <https://docker.com>`_
 
 .. image:: ../Imgs/InstalarDockerEnWindows.png
 
-Permit
+Permitir hacer cambios para instalar Docker
+
+.. image:: ../Imgs/PermitirHacerCambiosEnSuDispositivo.png
+
 Instalando...
 
 .. image:: ../Imgs/InstalandoDockerEnWindows.png
@@ -373,6 +376,7 @@ Ejecutaremos este archivo docker-compose.yml usando el comando
 
 .. code::
 
+ docker-compose build
  docker-compose up
 
 que activará dos contenedores con nuestros servicios ejecutándose dentro de
