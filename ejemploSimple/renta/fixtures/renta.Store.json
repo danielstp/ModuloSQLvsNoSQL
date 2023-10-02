@@ -1,0 +1,1 @@
+[{"model": "renta.store", "pk": 1, "fields": {"manager_staff": 1, "address": 1, "last_update": "2023-09-20"}}, {"model": "renta.store", "pk": 2, "fields": {"manager_staff": 2, "address": 2, "last_update": "2023-09-20"}}]

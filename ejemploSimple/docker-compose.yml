@@ -1,0 +1,41 @@
+# create two images, Django and mariadb
+services:
+  django:
+    build:
+      context: .
+      #target: localhost/prueba_django
+    ports:
+      - 8000:8000
+    image: localhost/prueba_django
+    container_name: prueba_django
+    networks:
+      - django-sql-network
+    environment:
+      - DB_HOSTNAME=db
+    depends_on:
+      - db
+    stdin_open: true  # docker run -i
+    tty: true         # docker run -t
+  db:
+    image: docker.io/library/mariadb:11
+    restart: unless-stopped
+    environment:
+      - MARIADB_ROOT_PASSWORD=PorFavorCambiar
+      - MARIADB_DATABASE=rentadvds
+      - MARIADB_USER=prueba
+      - MARIADB_PASSWORD=prueba
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Bogota
+    networks:
+      - django-sql-network
+    container_name: db
+    volumes:
+      - ./datadir:/var/lib/mysql:rw
+    stdin_open: false  # docker run -i
+    tty: false         # docker run -t
+
+# connect both containers to this network
+networks:
+  django-sql-network:
+    name: django-sql-network
