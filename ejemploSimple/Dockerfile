@@ -18,12 +18,12 @@ RUN echo "locales locales/locales_to_be_generated multiselect es_CO.UTF-8 UTF-8"
 ENV LANG es_CO.UTF-8
 
 # copy all files here into /app in image
-COPY manage.py requirements.txt inicio.sh /app/
+COPY manage.py requirements.txt inicio.sh entrypoint.sh /app/
 COPY renta /app/renta
 COPY ejemploSimple /app/ejemploSimple
 WORKDIR /app
 # instalar Django
 RUN pip3 install --no-cache-dir -r requirements.txt
 # run the node app
-CMD ["./manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["/app/entrypoint.sh"]
 
