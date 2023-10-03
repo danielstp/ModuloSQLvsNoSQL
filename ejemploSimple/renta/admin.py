@@ -69,7 +69,7 @@ class CityAdmin(admin.ModelAdmin):
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ("country", "last_update")
+    list_display = ("country", "countCities", "last_update")
     list_filter = ("last_update",)
 
 
@@ -133,7 +133,7 @@ class InventoryAdmin(admin.ModelAdmin):
 
 @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):
-    list_display = ("name", "last_update")
+    list_display = ("name", "countFilms", "last_update")
     list_filter = ("last_update",)
     search_fields = ("name",)
 

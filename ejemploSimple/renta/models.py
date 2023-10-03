@@ -66,6 +66,10 @@ class Country(models.Model):
         db_index=True, auto_now=True, blank=True, null=True
     )  # This field type is a guess.
 
+    def countCities(self):
+        return City.objects.filter(country=self.country_id).count()
+
+
     def __str__(self):
         return self.country
 
@@ -182,6 +186,12 @@ class Language(models.Model):
     language_id = models.AutoField(primary_key=True, db_index=True)
     name = models.CharField(max_length=20)
     last_update = models.DateField(db_index=True, auto_now=True)
+
+    def countFilms(self):
+        lang = Film.objects.filter(language=self.language_id).count()
+        original = Film.objects.filter(original_language=self.language_id).count()
+        return f"Films ({lang}) Original({original})"
+
 
     def __str__(self):
         return self.name

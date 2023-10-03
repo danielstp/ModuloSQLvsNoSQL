@@ -4,6 +4,23 @@
 git clone https://github.com/danielstp/ModuloSQLvsNoSQL.git
 cd ModuloSQLvsNoSQL
 
+podman-compose down
+podman build -t prueba_django . 
+
+podman-compose build
+
+docker-compose up
+
+# en otra consola
+docker-compose down
+
+#para entrar al contenedor
+docker run --network django-sql-network -it localhost/prueba_django /bin/bash
+# Cargar datos iniciales
+./incio.sh
+exit
+
+
 python -m venv venv
 .\venv\Scripts\activate
 
