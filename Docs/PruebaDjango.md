@@ -4,10 +4,10 @@
 git clone https://github.com/danielstp/ModuloSQLvsNoSQL.git
 cd ModuloSQLvsNoSQL
 
-podman-compose down
-podman build -t prueba_django . 
+docker-compose down
+docker build -t prueba_django . 
 
-podman-compose build
+docker-compose build
 
 docker-compose up
 
