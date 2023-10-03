@@ -17,21 +17,20 @@ services:
     stdin_open: true  # docker run -i
     tty: true         # docker run -t
   db:
-    image: docker.io/library/mariadb:11
+    image: docker.io/library/postgres:16
     restart: unless-stopped
     environment:
-      - MARIADB_ROOT_PASSWORD=PorFavorCambiar
-      - MARIADB_DATABASE=rentadvds
-      - MARIADB_USER=prueba
-      - MARIADB_PASSWORD=prueba
-      - PUID=1000
-      - PGID=1000
+      - POSTGRES_DB=rentadvds
+      - POSTGRES_USER=prueba
+      - POSTGRES_PASSWORD=prueba
+      - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
+      - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256
       - TZ=America/Bogota
     networks:
       - django-sql-network
     container_name: db
     volumes:
-      - ./datadir:/var/lib/mysql:rw
+      - ./datadir:/var/lib/postgresql/data:rw
     stdin_open: false  # docker run -i
     tty: false         # docker run -t
 
